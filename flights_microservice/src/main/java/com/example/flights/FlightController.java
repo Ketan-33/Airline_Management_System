@@ -17,7 +17,14 @@ public class FlightController {
     @Autowired
     FlightService flightService;
     @GetMapping
-    public List<FlightInfo> getFlights() {
+    public List<FlightInfo> getFlights(@RequestParam(required = false) String sort) {
+        if (sort != null) {
+            if (sort.equalsIgnoreCase("asc")) {
+                return flightService.getFlightsSortedByDepartureTime(true);
+            } else if (sort.equalsIgnoreCase("desc")) {
+                return flightService.getFlightsSortedByDepartureTime(false);
+            }
+        }
         return flightService.getFlights();
     }
     @GetMapping("/{id}")
