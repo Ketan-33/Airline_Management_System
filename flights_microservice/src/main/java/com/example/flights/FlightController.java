@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping
 public class FlightController {
 
     @Autowired
