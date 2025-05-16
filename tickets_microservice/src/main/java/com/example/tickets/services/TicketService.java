@@ -40,11 +40,8 @@ public class TicketService {
         } catch (RestClientException e) {
             throw new RuntimeException("Flight not found with id: " + ticketInfo.getFlightId());
         }
-        
-        // Generate ticket ID
-        String ticketId = UUID.randomUUID().toString();
-        TicketInfo ticketWithId = ticketInfo.toBuilder().ticketId(ticketId).build();
-        return ticketInfoRepository.createTicket(ticketWithId);
+
+        return ticketInfoRepository.createTicket(ticketInfo);
     }
 
     public void deleteTicket(String id) {

@@ -27,7 +27,7 @@ public class TicketInfoRepository {
         String ticketId = UUID.randomUUID().toString();
         TicketInfo ticketInfoWithId = ticketInfo.toBuilder().ticketId(ticketId).build();
         this.ticketInfoMap.put(ticketId, ticketInfoWithId);
-        return ticketInfoWithId;
+        return ticketInfo;
     }
 
     public void deleteTicket(String id) {
