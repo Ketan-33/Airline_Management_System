@@ -14,7 +14,7 @@ import java.util.UUID;
 @Service
 public class TicketService {
     @Autowired
-    private TicketInfoRepository ticketInfoRepository;
+    TicketInfoRepository ticketInfoRepository;
     
     @Autowired
     private RestTemplate restTemplate;
@@ -29,7 +29,7 @@ public class TicketService {
     public TicketInfo getTicket(String id) {
         return ticketInfoRepository.getTicketById(id);
     }
-    
+
     public TicketInfo createTicket(TicketInfo ticketInfo) {
         // Validate if flight exists before creating a ticket
         try {
@@ -41,7 +41,8 @@ public class TicketService {
             throw new RuntimeException("Flight not found with id: " + ticketInfo.getFlightId());
         }
 
-        return ticketInfoRepository.createTicket(ticketInfo);
+        TicketInfo savedTicket = ticketInfoRepository.createTicket(ticketInfo);
+        return savedTicket;
     }
 
     public void deleteTicket(String id) {

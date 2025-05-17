@@ -20,14 +20,14 @@ public class TicketInfoRepository {
     }
     
     public TicketInfo getTicketById(String id) {
-        return ticketInfoMap.get(id);
+        return this.ticketInfoMap.get(id);
     }
     
     public TicketInfo createTicket(TicketInfo ticketInfo) {
         String ticketId = UUID.randomUUID().toString();
         TicketInfo ticketInfoWithId = ticketInfo.toBuilder().ticketId(ticketId).build();
         this.ticketInfoMap.put(ticketId, ticketInfoWithId);
-        return ticketInfo;
+        return ticketInfoWithId;
     }
 
     public void deleteTicket(String id) {

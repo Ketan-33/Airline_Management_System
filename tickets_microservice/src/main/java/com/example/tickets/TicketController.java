@@ -14,7 +14,7 @@ import java.util.List;
 public class TicketController {
     
     @Autowired
-    private TicketService ticketService;
+    TicketService ticketService;
     
     @GetMapping
     public List<TicketInfo> getAllTickets() {
